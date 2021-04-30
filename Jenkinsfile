@@ -1,24 +1,16 @@
 pipeline {
-   agent any
+    agent {
+        docker {
+            image 'node:6-alpine' 
+            args '-p 3000:3000' 
+        }
+    }
+    stages {
+        stage('Build') { 
+            steps {
+                sh 'npm install' 
+            }
+        }
+    }
 
-   stages {
-      stage('Build') {
-         steps {
-            sh 'rm -rf build' 
-            sh 'mkdir build'
-            sh 'touch build/car.txt'
-            sh 'echo "chassis" >> build/car.txt'
-            sh 'echo "engine" >> build/car.txt'
-            sh 'echo "body" >> build/car.txt'
-         }
-      }
-      stage('Test') {
-          steps {
-              sh 'test -f build/car.txt'
-              sh 'grep "chassis" build/car.txt'
-              sh 'grep "engine" build/car.txt'
-              sh 'grep "body" build/car.txt'
-          }
-      }
-   }
 }
