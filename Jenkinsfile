@@ -19,7 +19,8 @@ pipeline {
 //         }
         stage('Publish') {
             steps {
-                sh './mvnw package'
+//                 sh './mvnw package'
+                    sh 'echo "a"'
                 // bat '.\mvnw package'
             }
             post {
