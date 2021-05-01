@@ -7,16 +7,16 @@ pipeline {
     }      
 
     stages {
-        stage('Build') {
-            steps {
-                sh 'echo $(AWS_ACCESS_KEY_ID)'
-            }    
-        }
-        stage('Test') {
-           steps {            
-                sh 'echo $(AWS_SECRET_ACCESS_KEY)'
-           }    
-        }
+//         stage('Build') {
+//             steps {
+//                 sh 'echo $(AWS_ACCESS_KEY_ID)'
+//             }
+//         }
+//         stage('Test') {
+//            steps {
+//                 sh 'echo $(AWS_SECRET_ACCESS_KEY)'
+//            }
+//         }
         stage('Publish') {
             steps {
                 sh './mvnw package'
